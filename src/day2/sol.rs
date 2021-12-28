@@ -51,9 +51,9 @@ impl FromStr for Move {
 }
 
 pub fn solve() {
-    println!("Day 2");
     let commands: Vec<Operation> = parse_input();
 
+    println!("Day 2");
     part_one(&commands);
     part_two(&commands);
 }
