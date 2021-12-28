@@ -1,2 +1,2 @@
-# aoc2021
-Solutions for Advent of Code 2021 
+# Advent of Code 2021 
+These are my solutions for Advent of Code 2021 
