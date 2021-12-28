@@ -1,3 +1,4 @@
+pub use sol::solve;
+
 mod sol;
 
-pub use sol::solve;

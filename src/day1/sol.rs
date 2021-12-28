@@ -4,11 +4,11 @@ pub fn solve() {
     let measurements: Vec<i32> = parse_input();
 
     println!("Day 1");
-    part_one(measurements.clone());
-    part_two(measurements);
+    part_one(&measurements);
+    part_two(&measurements);
 }
 
-fn part_one(measurements: Vec<i32>) {
+fn part_one(measurements: &[i32]) {
     let mut counter = 0;
     for i in 1..measurements.len() {
         if measurements[i] > measurements[i - 1] {
@@ -19,12 +19,12 @@ fn part_one(measurements: Vec<i32>) {
     println!("Part 1 - Answer: {}", counter);
 }
 
-fn part_two(measurements: Vec<i32>) {
+fn part_two(measurements: &[i32]) {
     let mut counter = 0;
     let mut sums = vec![];
     for i in (0..measurements.len()).step_by(4) {
         for x in i..(i + 4) {
-            let window = sum_window(&measurements, x);
+            let window = sum_window(measurements, x);
             sums.push(window);
         }
     }
@@ -38,11 +38,11 @@ fn part_two(measurements: Vec<i32>) {
     println!("Part 2 - Answer: {}", counter);
 }
 
-fn sum_window(measurements: &Vec<i32>, start_index: usize) -> i32 {
+fn sum_window(measurements: &[i32], start_index: usize) -> i32 {
     let target;
-    if (start_index + 3) >= measurements.len(){
+    if (start_index + 3) >= measurements.len() {
         target = measurements.len();
-    }else{
+    } else {
         target = start_index + 3;
     }
 

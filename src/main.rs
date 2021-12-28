@@ -1,7 +1,9 @@
+#![allow(dead_code)]
+
+mod common;
 mod day1;
 mod day2;
-mod common;
 
 fn main() {
-    day1::solve();
+    day2::solve();
 }
