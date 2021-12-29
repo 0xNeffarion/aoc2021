@@ -28,9 +28,9 @@ pub fn raw_input() -> Vec<String> {
 }
 
 pub fn parse_input<T>() -> Vec<T>
-    where
-        T: FromStr,
-        <T as FromStr>::Err: fmt::Debug,
+where
+    T: FromStr,
+    <T as FromStr>::Err: fmt::Debug,
 {
     raw_input()
         .iter()
