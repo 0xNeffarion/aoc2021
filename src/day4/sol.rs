@@ -115,7 +115,8 @@ fn part_two(order: &[u8], boards: &[Board]) {
         temp_boards.swap_remove(result.1);
     }
 
-    let sum: u32 = result.0
+    let sum: u32 = result
+        .0
         .squares
         .iter()
         .flatten()
