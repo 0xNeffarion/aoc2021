@@ -2,7 +2,7 @@ use crate::common;
 use phf::phf_map;
 use std::collections::VecDeque;
 
-type Syntax = Vec<Vec<char>>;
+type Syntax = [[char]];
 
 static CORRUPT_SCORES: phf::Map<char, u64> = phf_map! {
     ')' => 3,
@@ -30,13 +30,11 @@ pub fn solve() {
 }
 
 fn index_of(chars: [char; 4], c: char) -> i32 {
-    for i in 0..chars.len() {
-        if chars[i] == c {
-            return i as i32;
-        }
-    }
-
-    -1
+    (0..chars.len())
+        .into_iter()
+        .find(|&x| chars[x] == c)
+        .map(|x| x as i32)
+        .unwrap_or(-1)
 }
 
 fn check_corruption_chunk(chunk: &[char]) -> Option<u64> {
@@ -66,7 +64,7 @@ fn check_corruption_chunk(chunk: &[char]) -> Option<u64> {
     None
 }
 
-fn part_one(syntax: &Syntax) {
+fn part_one(syntax: &[Vec<char>]) {
     let syntax = syntax.to_vec();
     let points: u64 = syntax
         .iter()
@@ -96,7 +94,7 @@ fn check_incomplete_chunk(chunk: &[char]) -> Vec<char> {
     result
 }
 
-fn part_two(syntax: &Syntax) {
+fn part_two(syntax: &[Vec<char>]) {
     let syntax = syntax.to_vec();
     let clean = syntax
         .into_iter()
@@ -120,7 +118,7 @@ fn part_two(syntax: &Syntax) {
     println!("Part 2 - Answer: {}", middle);
 }
 
-fn input() -> Syntax {
+fn input() -> Vec<Vec<char>> {
     common::raw_input()
         .iter()
         .map(|x| x.trim().chars().collect::<Vec<char>>())

@@ -4,11 +4,11 @@ pub fn solve() {
     let state: Vec<u128> = input();
 
     println!("Day 6");
-    part_one(&mut state.clone());
-    part_two(&mut state.clone());
+    part_one(&state);
+    part_two(&state);
 }
 
-fn breed_fish(state: &mut Vec<u128>, days: usize) {
+fn breed_fish(state: &mut [u128], days: usize) {
     let mut temp = 0;
     (0..days).for_each(|_| {
         temp = state[0];
@@ -18,14 +18,16 @@ fn breed_fish(state: &mut Vec<u128>, days: usize) {
     })
 }
 
-fn part_one(state: &mut Vec<u128>) {
-    breed_fish(state, 80);
+fn part_one(state: &[u128]) {
+    let mut state = state.to_vec();
+    breed_fish(&mut state, 80);
 
     println!("Part 1 - Answer: {}", state.iter().sum::<u128>());
 }
 
-fn part_two(state: &mut Vec<u128>) {
-    breed_fish(state, 256);
+fn part_two(state: &[u128]) {
+    let mut state = state.to_vec();
+    breed_fish(&mut state, 256);
 
     println!("Part 1 - Answer: {}", state.iter().sum::<u128>());
 }
